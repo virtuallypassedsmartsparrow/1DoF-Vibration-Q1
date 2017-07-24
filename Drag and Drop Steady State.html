@@ -148,7 +148,7 @@ ctx.clearRect(0,0,canvaswidth*scale,canvasheight*scale);
 	springanddamper(canvaswidth/2, 0, canvaswidth/2, x_1 + canvasheight/2 - boxlength/2, 10);
 
 	//drawing force
-	drawArrowSmall(canvaswidth/2 + boxlength, canvasheight/2 + x_1, canvaswidth/2 + boxlength, canvasheight/2 + x_1 + F * Math.sin(w*timer)/100);
+	drawArrowSmall(canvaswidth/2 + boxlength, canvasheight/2 + x_1, canvaswidth/2 + boxlength, canvasheight/2 + x_1 + F * Math.sin(w*timer)/100, "blue");
 
 	//position of ball
 	a_1 = -(k/m) * x_1 -(c/m) * v_1 +(F/m)*Math.sin(w*timer);
