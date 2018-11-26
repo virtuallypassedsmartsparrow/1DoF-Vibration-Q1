@@ -121,7 +121,7 @@ ctx.clearRect(0,0,canvaswidth*scale,canvasheight*scale);
 	//creating vector of displacements X and time T
 	count = count + 1;
 	Xpos[count] = x_1
-	T[count] = timer
+	T[count] = timer *0.5
 
 	Chart(canvaswidth/3 + boxlength/2, canvasheight/2, T, Xpos)
 
@@ -136,31 +136,20 @@ function getCanvas() {
 	return c.getContext("2d");
 } 
 function Chart(originx, originy, Xvec,Yvec) {
-	var x0 = originx //* scale;
-	var y0 = originy //* scale;
+	var x0 = originx * scale;
+	var y0 = originy * scale;
 	var X = Xvec;
 	var Y = Yvec;
-	for (i=0; i<X.length; i++){
-		drawLine(x0+X[i],y0+Y[i],x0+X[i+1],y0+Y[i+1])
+	ctx.strokeStyle = "black";
+	ctx.beginPath();
+	//drawing chart
+	ctx.moveTo(x0+X[0],y0+Y[0]);
+	for (i = 1; i < X.length; i++){
+		ctx.lineTo(x0+X[i]*scale,y0+Y[i]*scale)
 	}
-	
-	//console.log(X[10])
-	// var x0 = originx * scale;
-	// var y0 = originy * scale;
-	// var X = Xvec;
-	// var Y = Yvec;
-	// ctx.strokeStyle = "black";
-	// ctx.beginPath();
-	// //drawing chart
-	// ctx.moveTo(x0+X[0],y0+Y[0]);
-	// for (i = 1; i < X.length; i++){
-	// 	X[i]=X[i] * scale;
-	// 	Y[i]=Y[i] * scale;
-	// 	ctx.lineTo(x0+X[i],y0+Y[i])
-	// }
-	// ctx.lineWidth = 1;
-	// ctx.stroke();
-	// ctx.closePath();
+	ctx.lineWidth = 1;
+	ctx.stroke();
+	ctx.closePath();
 }
 function drawRectangle( x, y, width, height, color) {
 	ctx.beginPath();
